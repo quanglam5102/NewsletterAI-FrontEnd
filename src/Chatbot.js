@@ -17,14 +17,14 @@ const Chatbot = () => {
       // Send the message to the chatbot API
       try {
         setIsLoading(true);
-        const response = await fetch('/api/chatbot/', {
+        const response = await fetch('https://newsletter-ai-backend.vercel.app/api/chatbot/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: messageToSend }),
         });
         const data = await response.json();
-        console.log(data);
-        const botMessage = data.outputs[0].outputs[0].results.message.data.text || "Sorry, I didn't get that.";
+        console.log(data.response);
+        const botMessage = data.response || "Sorry, I didn't get that.";
 
         // Add the bot's response to the conversation
         setMessages((prevMessages) => [

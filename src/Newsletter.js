@@ -78,16 +78,17 @@ const Newsletter = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/newsletter/", {
-        method: "POST",
+      const response = await fetch("https://newsletter-ai-backend.vercel.app/api/newsletter/", {
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: "VinFast's Growth" }),
+        // body: JSON.stringify({ message: "VinFast's Growth" }),
       });
 
       if (response.ok) {
         const data = await response.json();
+        console.log("hello", data.newsletter)
         const formattedText = formatResponse(
-          data.outputs[0].outputs[0].results.message.data.text ||
+          data.newsletter ||
             "No Content Available"
         );
 
