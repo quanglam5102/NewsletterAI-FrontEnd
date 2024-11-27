@@ -23,7 +23,6 @@ const Chatbot = () => {
           body: JSON.stringify({ message: messageToSend }),
         });
         const data = await response.json();
-        console.log(data.response);
         const botMessage = data.response || "Sorry, I didn't get that.";
 
         // Add the bot's response to the conversation

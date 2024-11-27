@@ -55,7 +55,6 @@ const Newsletter = () => {
       /(\b(?:October|November)\s\d{1,2},?\s?\d{4}\b)/g,
       "\n\n$1"
     );
-    console.log("hello world", detectedHeaders);
     // Loop through the detected headers and apply bold formatting (if needed)
     detectedHeaders.forEach((header) => {
       const headerRegex = new RegExp(`(^|\\n)(${header})(?=\\n)`, "g");
@@ -76,22 +75,18 @@ const Newsletter = () => {
 
   const fetchResponse = async () => {
     setIsLoading(true);
-
     try {
       const response = await fetch("https://newsletter-ai-backend.vercel.app/api/newsletter/", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ message: "VinFast's Growth" }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        console.log("hello", data.newsletter)
         const formattedText = formatResponse(
           data.newsletter ||
             "No Content Available"
         );
-
         setNewsletterBody(formattedText);
         sessionStorage.setItem("newsletterContent", formattedText);
       } else {
