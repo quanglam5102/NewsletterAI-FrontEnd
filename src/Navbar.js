@@ -12,13 +12,12 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
-import AvatarImage from './images/avatar.jpeg'
-// import { useAuth } from './AuthProvider';
+import AvatarImage from "./images/avatar.jpeg";
+import { useAuth } from './AuthProvider';
 
 function Navbar() {
   const navigate = useNavigate();
-  // const { logout, isAuthenticated } = useAuth(); //Use this one instead
-  const { logout, isAuthenticated } = false;
+  const { logout, isAuthenticated } = useAuth();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -56,12 +55,10 @@ function Navbar() {
     setAnchorElNav(null);
     if (e === "logout") {
       logout();
-      navigate('/login');
-    }
-    else if(typeof e === "object") {
+      navigate("/login");
+    } else if (typeof e === "object") {
       return;
-    }
-    else {
+    } else {
       let path = e === "home" ? "/" : "/" + e;
       navigate(path);
     }
@@ -71,12 +68,10 @@ function Navbar() {
     setAnchorElUser(null);
     if (e === "/profile") {
       navigate(e);
-    }
-    else if(e === "/logout") {
+    } else if (e === "/logout") {
       logout();
-      navigate('/login');
-    }
-    else {
+      navigate("/login");
+    } else {
       return;
     }
   };

@@ -9,19 +9,49 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleRegister = (e) => {
+  const registerUser = async (username, password) => {
+    try {
+      const response = await fetch("https://newsletter-ai-backend.vercel.app/api/register/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Registration failed");
+      }
+  
+      const data = await response.json();
+      return data; // Return the success response
+    } catch (error) {
+      console.error("Error:", error.message);
+      return { success: false, error: error.message };
+    }
+  };
+  
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Perform registration logic (e.g., call an API)
+  
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+  
     console.log("Name:", name);
     console.log("Email:", email);
     console.log("Password:", password);
-    // Navigate to home or login page after successful registration
-    navigate("/login");
-  };
+  
+    // Call registerUser and handle the response
+    const result = await registerUser(email, password);
+  
+    if (result.success) {
+      alert("Registration successful! Please log in.");
+      navigate("/login");
+    } else {
+      alert(`Registration failed: ${result.error}`);
+    }
+  };  
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: 4 }}>

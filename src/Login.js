@@ -1,20 +1,52 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button, Typography, Container } from "@mui/material";
+import { useAuth } from './AuthProvider';
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { login } = useAuth();
 
-  const handleLogin = (e) => {
+  const loginUser = async (username, password) => {
+    try {
+      const response = await fetch("https://newsletter-ai-backend.vercel.app/api/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Login failed");
+      }
+  
+      const data = await response.json();
+      return { success: true, data }; // Return success status and data
+    } catch (error) {
+      console.error("Error:", error.message);
+      return { success: false, error: error.message }; // Return failure status and error message
+    }
+  };
+  
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Perform login logic (e.g., call an API)
+  
     console.log("Email:", email);
     console.log("Password:", password);
-    // Navigate to home page after successful login
-    navigate("/");
+  
+    // Call loginUser and handle the response
+    const result = await loginUser(email, password);
+  
+    if (result.success) {
+      login(result.token);
+      navigate("/");
+    } else {
+      alert(`Login failed: ${result.error}`);
+    }
   };
+  
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: 4 }}>
