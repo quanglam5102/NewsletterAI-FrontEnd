@@ -83,12 +83,12 @@ const Newsletter = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // const formattedText = formatResponse(
-        //   data.newsletter ||
-        //     "No Content Available"
-        // );
-        setNewsletterBody(data.newsletter);
-        sessionStorage.setItem("newsletterContent", data.newsletter);
+        const formattedText = formatResponse(
+          data.newsletter ||
+            "No Content Available"
+        );
+        setNewsletterBody(formattedText);
+        sessionStorage.setItem("newsletterContent", formattedText);
       } else {
         console.error("Error fetching response:", response.status);
         setNewsletterBody("Failed to fetch content");
