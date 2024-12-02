@@ -10,7 +10,7 @@ import Registration from "./Registration";
 import About from "./About";
 import Profile from "./Profile";
 import Chatbot from "./Chatbot";
-// import { AuthProvider, useAuth } from "./AuthProvider";
+import { AuthProvider, useAuth } from "./AuthProvider";
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,26 +26,26 @@ export default class App extends Component {
 
   render() {
     return (
-      //<AuthProvider>
-      <Router>
-      <Navbar />
-      <Box sx={{ pt: '64px' }}>
-      <Routes>
-        <Route path="/" element={<Home />} exact></Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/about" element={<About />} />
-        {/* <Route path="/profile" element={<UserProfile />} />
+      <AuthProvider>
+        <Router>
+          <Navbar />
+          <Box sx={{ pt: "64px" }}>
+            <Routes>
+              <Route path="/" element={<Home />} exact></Route>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Registration />} />
+              <Route path="/about" element={<About />} />
+              {/* <Route path="/profile" element={<UserProfile />} />
         <Route path="/path" element={<LearningPath />} />
         <Route path="/content" element={<ProtectedRoute element={<Content />} />} />
         <Route path="/discussion" element={<ProtectedRoute element={<Discussion />} />} /> */}
-        <Route path="/newsletter" element={<Newsletter />}/>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      </Box>
-    </Router>
-      //</AuthProvider>
+              <Route path="/newsletter" element={<Newsletter />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Box>
+        </Router>
+      </AuthProvider>
     );
   }
 }

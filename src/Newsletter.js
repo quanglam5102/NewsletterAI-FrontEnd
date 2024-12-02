@@ -76,19 +76,19 @@ const Newsletter = () => {
   const fetchResponse = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("https://newsletter-ai-backend.vercel.app/api/newsletter/", {
+      const response = await fetch("http://127.0.0.1:8000/api/newsletter/", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
 
       if (response.ok) {
         const data = await response.json();
-        const formattedText = formatResponse(
-          data.newsletter ||
-            "No Content Available"
-        );
-        setNewsletterBody(formattedText);
-        sessionStorage.setItem("newsletterContent", formattedText);
+        // const formattedText = formatResponse(
+        //   data.newsletter ||
+        //     "No Content Available"
+        // );
+        setNewsletterBody(data.newsletter);
+        sessionStorage.setItem("newsletterContent", data.newsletter);
       } else {
         console.error("Error fetching response:", response.status);
         setNewsletterBody("Failed to fetch content");
