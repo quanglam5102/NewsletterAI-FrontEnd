@@ -36,8 +36,8 @@ function Navbar() {
     { label: "Home", path: "home" },
     { label: "Newsletter", path: "newsletter" },
     { label: "About", path: "about" },
-    { label: "Register", path: "register" },
-    { label: "Login", path: "login" }
+    // { label: "Register", path: "register" },
+    // { label: "Login", path: "login" }
   ];
 
   const settings = [
