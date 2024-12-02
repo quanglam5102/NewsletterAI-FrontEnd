@@ -51,10 +51,10 @@ const Newsletter = () => {
     formattedText = formattedText.replace(/\*\*/g, "");
 
     // Additional formatting like line breaks before dates (optional)
-    formattedText = formattedText.replace(
-      /(\b(?:October|November)\s\d{1,2},?\s?\d{4}\b)/g,
-      "\n\n$1"
-    );
+    // formattedText = formattedText.replace(
+    //   /(\b(?:October|November)\s\d{1,2},?\s?\d{4}\b)/g,
+    //   "\n\n$1"
+    // );
     // Loop through the detected headers and apply bold formatting (if needed)
     detectedHeaders.forEach((header) => {
       const headerRegex = new RegExp(`(^|\\n)(${header})(?=\\n)`, "g");
