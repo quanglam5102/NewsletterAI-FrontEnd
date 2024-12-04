@@ -18,6 +18,15 @@ import {
   useNavigate,
   useLocation,
 } from "react-router-dom";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+const theme = createTheme({
+  // Customize the theme here if needed
+  palette: {
+    background: {
+      paper: '#fff',  // Ensure the paper color is defined
+    },
+  },
+});
 
 export default class App extends Component {
   constructor(props) {
@@ -26,6 +35,7 @@ export default class App extends Component {
 
   render() {
     return (
+      <ThemeProvider theme={theme}>
       <AuthProvider>
         <Router>
           <Navbar />
@@ -46,6 +56,7 @@ export default class App extends Component {
           </Box>
         </Router>
       </AuthProvider>
+      </ThemeProvider>
     );
   }
 }

@@ -40,8 +40,8 @@ function Navbar() {
   ];
 
   const settings = [
-    { label: "Profile", path: "/profile" },
-    { label: "Logout", path: "/logout" },
+    // { label: "Profile", path: "/profile" },
+    // { label: "Logout", path: "/logout" },
   ];
 
   const handleOpenNavMenu = (event) => {
@@ -177,13 +177,13 @@ function Navbar() {
             </Button>
           ))}
         </Box>
-
+        {/* onClick={handleOpenUserMenu} for the below button */}
         <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          {/* <Tooltip title="Open settings"> */}
+            <IconButton sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src={AvatarImage} />
             </IconButton>
-          </Tooltip>
+          {/* </Tooltip> */}
           <Menu
             sx={{ mt: "45px" }}
             id="menu-appbar"
