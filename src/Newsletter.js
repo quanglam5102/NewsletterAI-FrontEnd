@@ -108,9 +108,9 @@ const Newsletter = () => {
           onClick={fetchResponse}
           variant="contained"
           sx={{
-            backgroundColor: "#007BFF",
+            backgroundColor: "#00008b",
             "&:hover": {
-              backgroundColor: "#0056b3",
+              backgroundColor: "#00008b",
             },
             paddingY: 1.5,
             fontWeight: "bold",
@@ -172,9 +172,9 @@ const Newsletter = () => {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "#007BFF",
+            backgroundColor: "#00008b",
             "&:hover": {
-              backgroundColor: "#0056b3",
+              backgroundColor: "#00008b",
             },
           }}
           color="primary"
