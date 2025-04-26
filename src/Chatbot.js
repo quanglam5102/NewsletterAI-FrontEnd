@@ -55,7 +55,7 @@ const Chatbot = () => {
             <ListItem key={index} sx={{ justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start', width: '100%' }}>
               <Box
                 sx={{
-                  backgroundColor: msg.sender === 'user' ? '#00008b' : '#00008b',
+                  backgroundColor: msg.sender === 'user' ? '#b5ebbb' : '#D1E7FF',
                   color: '#333',
                   padding: 1.5,
                   borderRadius: 2,
