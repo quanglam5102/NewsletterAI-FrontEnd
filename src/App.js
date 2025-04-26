@@ -23,7 +23,7 @@ const theme = createTheme({
   // Customize the theme here if needed
   palette: {
     background: {
-      paper: '#fff',  // Ensure the paper color is defined
+      paper: '#007BFF',  // Ensure the paper color is defined
     },
   },
 });
