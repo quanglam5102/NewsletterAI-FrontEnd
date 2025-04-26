@@ -81,7 +81,7 @@ const Chatbot = () => {
             onClick={handleSendMessage}
             variant="contained"
             color="primary"
-            sx={{ backgroundColor: '#007BFF', '&:hover': { backgroundColor: '#007BFF' } }}
+            sx={{ backgroundColor: '#00008b', '&:hover': { backgroundColor: '#00008b' } }}
             disabled={isLoading}
           >
             {isLoading ? 'Sending...' : 'Send'}
