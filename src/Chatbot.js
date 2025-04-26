@@ -1,5 +1,3 @@
-// src/Chatbot.js
-
 import React, { useState } from 'react';
 import { Box, Typography, Paper, Button, TextField, List, ListItem, ListItemText } from '@mui/material';
 
@@ -19,14 +17,13 @@ const Chatbot = () => {
       // Send the message to the chatbot API
       try {
         setIsLoading(true);
-        const response = await fetch('/api/chatbot/', {
+        const response = await fetch('https://newsletter-ai-backend.vercel.app/api/chatbot/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: messageToSend }),
         });
         const data = await response.json();
-        console.log(data);
-        const botMessage = data.outputs[0].outputs[0].results.message.data.text || "Sorry, I didn't get that.";
+        const botMessage = data.response || "Sorry, I didn't get that.";
 
         // Add the bot's response to the conversation
         setMessages((prevMessages) => [
@@ -50,7 +47,7 @@ const Chatbot = () => {
   return (
 
       <Paper elevation={3} sx={{ width: 400, height: 600, display: 'flex', flexDirection: 'column', borderRadius: 2 }}>
-        <Box sx={{ backgroundColor: '#1976d2', color: 'white', padding: 2, textAlign: 'center' }}>
+        <Box sx={{ backgroundColor: '#00008B', color: 'white', padding: 2, textAlign: 'center' }}>
           <Typography variant="h6">Chatbot</Typography>
         </Box>
         <List sx={{ flex: 1, overflowY: 'auto', padding: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -84,7 +81,7 @@ const Chatbot = () => {
             onClick={handleSendMessage}
             variant="contained"
             color="primary"
-            sx={{ backgroundColor: '#007BFF', '&:hover': { backgroundColor: '#0056b3' } }}
+            sx={{ backgroundColor: '#007BFF', '&:hover': { backgroundColor: '#007BFF' } }}
             disabled={isLoading}
           >
             {isLoading ? 'Sending...' : 'Send'}
